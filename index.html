@@ -92,12 +92,19 @@
 
   /* Logo lockup. Everything is in em so it scales as one piece:
      the mark is 1.125em tall, the letters sit centred within its height, 0.0625em gap. */
+  .hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: clamp(56px, 12vw, 120px);
+  }
   .brand {
     position: relative;
     display: flex;
     align-items: baseline;          /* "dist" baseline starts on the mark's bottom edge... */
     gap: .0625em;
-    font-size: clamp(56px, 12vw, 120px);
+    font-size: 1em;
   }
   .brand svg {
     width: 1.5625em;
@@ -113,6 +120,23 @@
     letter-spacing: -.045em;
     line-height: 1;
     color: #7476ff;
+  }
+  /* "Launching soon" under a short fading divider. Spacing is in logo-size ems so it shrinks with the
+     logo on phones (measured: even gaps above/below the line at 1440px and 375px). */
+  .rule {
+    width: .6em;
+    height: 1px;
+    margin: .15em 0 .25em;
+    background: linear-gradient(90deg, transparent, #5b4fa0, transparent);
+  }
+  .soon {
+    margin: 0;
+    padding-left: .42em;            /* balances the trailing letter-space so the words are truly centred */
+    font-size: max(12px, .13em);
+    font-weight: 500;
+    letter-spacing: .42em;
+    text-transform: uppercase;
+    color: #9c99b5;
   }
   /* Small, quiet link to the dashboard (app.dist.co.nz), top-right. */
   .signin {
@@ -134,14 +158,18 @@
 </head>
 <body>
   <a class="signin" href="https://app.dist.co.nz/login">Sign in</a>
-  <h1 class="brand" aria-label="dist studio" style="margin:0">
-    <svg viewBox="0 0 100 72" aria-hidden="true">
-      <polygon points="0,0 0,72 28,44 28,0" fill="#8da2d4"/>
-      <polygon points="28,0 28,44 72,0" fill="#3a20c9"/>
-      <polygon points="28,44 28,72 100,0 72,0" fill="#5b00e8"/>
-    </svg>
-    <span aria-hidden="true">dist</span>
-  </h1>
+  <main class="hero">
+    <h1 class="brand" aria-label="dist studio" style="margin:0">
+      <svg viewBox="0 0 100 72" aria-hidden="true">
+        <polygon points="0,0 0,72 28,44 28,0" fill="#8da2d4"/>
+        <polygon points="28,0 28,44 72,0" fill="#3a20c9"/>
+        <polygon points="28,44 28,72 100,0 72,0" fill="#5b00e8"/>
+      </svg>
+      <span aria-hidden="true">dist</span>
+    </h1>
+    <div class="rule" aria-hidden="true"></div>
+    <p class="soon">Launching soon</p>
+  </main>
   <!-- Visitor counter (app.dist.co.nz/api/hit): no cookies; sends only the page and the referring site's name. -->
   <script>new Image().src="https://app.dist.co.nz/api/hit?p="+encodeURIComponent(location.pathname)+"&r="+encodeURIComponent(document.referrer.split("/")[2]||"")</script>
   <noscript><img src="https://app.dist.co.nz/api/hit?p=/" alt="" width="1" height="1" style="position:absolute;left:-9999px"></noscript>
