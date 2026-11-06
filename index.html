@@ -65,7 +65,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 72'%3E%3Cpolygon points='0,0 0,72 28,44 28,0' fill='%238da2d4'/%3E%3Cpolygon points='28,0 28,44 72,0' fill='%233a20c9'/%3E%3Cpolygon points='28,44 28,72 100,0 72,0' fill='%235b00e8'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;800&display=swap" rel="stylesheet">
 <style>
   :root { color-scheme: dark; }
   * { box-sizing: border-box; }
@@ -114,9 +114,26 @@
     line-height: 1;
     color: #7476ff;
   }
+  /* Small, quiet link to the dashboard (app.dist.co.nz), top-right. */
+  .signin {
+    position: fixed;
+    top: 18px;
+    right: 22px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid #29253d;
+    background: #15131f99;
+    color: #9c99b5;
+    font: 500 13px/1 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    text-decoration: none;
+    transition: color .15s, border-color .15s, background .15s;
+  }
+  .signin:hover { color: #ecebf5; border-color: #3a3555; background: #1c1a2b; }
+  .signin:focus-visible { outline: 2px solid #8b74ff; outline-offset: 2px; }
 </style>
 </head>
 <body>
+  <a class="signin" href="https://app.dist.co.nz/login">Sign in</a>
   <h1 class="brand" aria-label="dist studio" style="margin:0">
     <svg viewBox="0 0 100 72" aria-hidden="true">
       <polygon points="0,0 0,72 28,44 28,0" fill="#8da2d4"/>
